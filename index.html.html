@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>از دل کار | تمرکز در روزهای تکه‌تکه</title>
+  <meta name="description" content="یک ابزار کوتاه برای پس گرفتن تمرکز وسط جلسه‌ها، پیام‌ها و تغییر مداوم اولویت‌ها." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f6f3; --panel:#fff; --text:#171717; --muted:#6b6b66; --line:#deded7;
+      --accent:#1f5f4a; --accent-soft:#e8f1ed; --warn-soft:#f7efe3; --shadow:0 10px 30px rgba(20,20,20,.06); --radius:20px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Vazirmatn",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.85}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 56px}
+    .hero{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch;margin-bottom:18px}
+    .hero-main,.hero-side,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-main{padding:30px}.eyebrow{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:8px}
+    h1{font-size:clamp(28px,5vw,48px);line-height:1.35;margin:0 0 12px;font-weight:800;letter-spacing:-.6px}
+    .lead{font-size:17px;color:var(--muted);margin:0;max-width:62ch}
+    .hero-side{padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:var(--accent-soft)}
+    .quote{font-size:21px;font-weight:800;line-height:1.65;margin:0}.micro{font-size:13px;color:var(--muted);margin-top:18px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+    .card{padding:24px;min-width:0}.card.full{grid-column:1/-1}
+    .step{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:var(--accent);margin-bottom:8px}
+    h2{font-size:22px;margin:0 0 6px;line-height:1.5}.desc{color:var(--muted);font-size:14px;margin:0 0 18px}
+    .choices{display:grid;gap:9px}
+    label.choice{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:12px 13px;cursor:pointer;background:#fff;transition:.15s ease}
+    label.choice:hover{border-color:#b8b8af}label.choice:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+    input[type="checkbox"],input[type="radio"]{width:18px;height:18px;margin-top:5px;accent-color:var(--accent);flex:0 0 auto}
+    .scorebox{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;padding:14px;border-radius:14px;background:#f3f3ef}
+    .score{font-size:28px;font-weight:800;white-space:nowrap}.status{font-size:14px;color:var(--muted)}
+    .question{padding:14px 0;border-bottom:1px solid var(--line)}.question:last-child{border-bottom:0}.question strong{display:block;margin-bottom:9px}
+    .radio-row{display:flex;gap:8px;flex-wrap:wrap}.radio-pill{border:1px solid var(--line);padding:7px 11px;border-radius:999px;cursor:pointer;font-size:13px}
+    .radio-pill:has(input:checked){background:var(--accent-soft);border-color:var(--accent)}.radio-pill input{margin-left:5px}
+    .result{margin-top:16px;padding:16px;border-radius:14px;background:var(--accent-soft);border:1px solid #cfe0d8;font-weight:600}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}
+    input[type="text"],input[type="time"],textarea,select{width:100%;font:inherit;font-size:16px;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;outline:none}
+    textarea{min-height:92px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,95,74,.1)}
+    .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+    button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:10px 15px;cursor:pointer;background:var(--accent);color:white}
+    button.secondary{background:#ecece7;color:var(--text)}button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+    .plan{margin-top:16px;border:1px dashed #b8c9c1;border-radius:16px;padding:16px;background:#fbfdfc}.plan h3{margin:0 0 10px;font-size:17px}.plan ul{margin:0;padding:0 20px 0 0}.plan li{margin:5px 0}
+    .tip{background:var(--warn-soft);border:1px solid #ead9bf;border-radius:14px;padding:14px;color:#5f431f;font-size:14px;margin-top:14px}
+    .footer{margin-top:18px;padding:18px 4px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.badge{display:inline-block;background:#ecece7;border-radius:999px;padding:4px 9px;font-size:12px}
+    @media(max-width:760px){.hero,.grid,.form-grid{grid-template-columns:1fr}.hero-main{padding:24px}.hero-side{padding:20px}.card.full,.field.full{grid-column:auto}.wrap{padding:16px 12px 36px}.card{padding:20px}}
+    @media print{body{background:#fff}.wrap{max-width:none;padding:0}.hero-main,.hero-side,.card{box-shadow:none}button,.actions{display:none!important}.grid{display:block}.card{break-inside:avoid;margin:10px 0}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">از دل کار</div>
+        <h1>تمرکز در روزهای تکه‌تکه</h1>
+        <p class="lead">یک ابزار کوتاه برای اینکه بفهمی تمرکزت دقیقاً کجا از بین می‌رود، کدام وقفه‌ها واقعاً فوری‌اند و چطور یک بازه واقعی برای کار عمیق بسازی.</p>
+      </div>
+      <aside class="hero-side">
+        <p class="quote">«مشکل همیشه کمبود وقت نیست؛ خیلی وقت‌ها نداشتنِ زمانِ بدون وقفه است.»</p>
+        <div class="micro">زمان تکمیل: حدود ۵ دقیقه</div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="step">۱. وضعیت امروز</div>
+        <h2>چه چیزهایی تمرکزت را می‌خورند؟</h2>
+        <p class="desc">هر موردی که در یک روز کاری معمول برایت اتفاق می‌افتد انتخاب کن.</p>
+        <div class="choices" id="focusKillers">
+          <label class="choice"><input type="checkbox"><span>جلسه‌هایی که وسط زمان کار پخش شده‌اند.</span></label>
+          <label class="choice"><input type="checkbox"><span>پیام‌هایی که احساس می‌کنی باید همان لحظه جواب بدهی.</span></label>
+          <label class="choice"><input type="checkbox"><span>عوض شدن اولویت‌ها در طول روز.</span></label>
+          <label class="choice"><input type="checkbox"><span>باز بودن هم‌زمان چند کار و چند فایل.</span></label>
+          <label class="choice"><input type="checkbox"><span>درخواست‌های ناگهانی دیگران که وارد برنامه‌ات می‌شوند.</span></label>
+          <label class="choice"><input type="checkbox"><span>شروع روز بدون اینکه یک کار اصلی مشخص داشته باشی.</span></label>
+        </div>
+        <div class="scorebox" aria-live="polite"><div class="status" id="focusStatus">مواردی که تجربه می‌کنی را انتخاب کن.</div><div class="score"><span id="focusScore">۰</span>/۶</div></div>
+      </article>
+
+      <article class="card">
+        <div class="step">۲. تست وقفه</div>
+        <h2>این کار واقعاً باید «الان» انجام شود؟</h2>
+        <p class="desc">برای وقفه‌ای که همین الان سراغت آمده، این سه سؤال را جواب بده.</p>
+        <div id="interruptQuiz">
+          <div class="question"><strong>اگر یک ساعت دیرتر انجام شود، پیامد جدی دارد؟</strong><div class="radio-row"><label class="radio-pill"><input type="radio" name="q1" value="2"> بله</label><label class="radio-pill"><input type="radio" name="q1" value="0"> نه</label></div></div>
+          <div class="question"><strong>ددلاین بیرونی و واقعی دارد؟</strong><div class="radio-row"><label class="radio-pill"><input type="radio" name="q2" value="2"> بله</label><label class="radio-pill"><input type="radio" name="q2" value="0"> نه</label></div></div>
+          <div class="question"><strong>فقط به این دلیل فوری شده که یک نفر الان پیگیری کرده؟</strong><div class="radio-row"><label class="radio-pill"><input type="radio" name="q3" value="-2"> بله</label><label class="radio-pill"><input type="radio" name="q3" value="1"> نه</label></div></div>
+        </div>
+        <div class="result" id="interruptResult" aria-live="polite">سه سؤال را جواب بده تا نتیجه نمایش داده شود.</div>
+      </article>
+
+      <article class="card full">
+        <div class="step">۳. یک بازه واقعی برای تمرکز بساز</div>
+        <h2>نسخه عملی کار عمیق</h2>
+        <p class="desc">نه چهار ساعت سکوت مطلق؛ فقط یک بازه مشخص که قرار نیست هر پنج دقیقه از کارت جدا شوی.</p>
+        <form id="focusPlanner">
+          <div class="form-grid">
+            <div class="field full"><label for="mainTask">اگر امروز فقط یک کار مهم جلو برود، آن کار چیست؟</label><input id="mainTask" type="text" placeholder="مثلاً: نوشتن پروپوزال، تحلیل داده، طراحی برنامه فصل..." /></div>
+            <div class="field"><label for="startTime">شروع بازه تمرکز</label><input id="startTime" type="time" value="09:30" /></div>
+            <div class="field"><label for="duration">مدت</label><select id="duration"><option value="45">۴۵ دقیقه</option><option value="60" selected>۶۰ دقیقه</option><option value="75">۷۵ دقیقه</option><option value="90">۹۰ دقیقه</option></select></div>
+            <div class="field"><label for="messages">در این بازه پیام‌ها را چه می‌کنی؟</label><select id="messages"><option>نوتیفیکیشن‌ها را می‌بندم</option><option>فقط پیام‌های ضروری را باز می‌گذارم</option><option>پیام‌ها را بعد از پایان بازه چک می‌کنم</option></select></div>
+            <div class="field"><label for="capture">کارهای جدیدی که وسط کار می‌آیند</label><select id="capture"><option>فقط یادداشت می‌کنم؛ الان انجام نمی‌دهم</option><option>در فهرست کارهای بعدی می‌گذارم</option><option>اگر زیر ۲ دقیقه بود انجام می‌دهم</option></select></div>
+            <div class="field full"><label for="boundary">یک مرز ساده برای دیگران</label><input id="boundary" type="text" placeholder="مثلاً: تا ساعت ۱۱ روی این کارم؛ بعدش پیام‌ها رو چک می‌کنم." /></div>
+          </div>
+          <div class="actions"><button type="submit">ساختن برنامه تمرکز</button><button type="button" class="secondary" id="resetBtn">پاک کردن</button><button type="button" class="ghost" id="printBtn">چاپ / ذخیره PDF</button></div>
+        </form>
+        <div class="plan" id="planBox" hidden aria-live="polite"><h3>برنامه تمرکز امروز</h3><ul id="planList"></ul></div>
+        <div class="tip">معیار موفقیت این نیست که هیچ‌کس مزاحمت نشود؛ این است که هر وقفه‌ای نتواند اولویت تو را عوض کند.</div>
+      </article>
+
+      <article class="card full">
+        <div class="step">۴. پایان روز</div>
+        <h2>یک دقیقه جمع‌بندی</h2>
+        <p class="desc">این سه سؤال کمک می‌کنند بفهمی واقعاً چه چیزی روزت را تکه‌تکه کرده.</p>
+        <div class="form-grid">
+          <div class="field"><label for="done">مهم‌ترین چیزی که امروز واقعاً جلو رفت</label><textarea id="done" placeholder="یک جمله کافی است."></textarea></div>
+          <div class="field"><label for="distraction">بزرگ‌ترین عامل حواس‌پرتی امروز</label><textarea id="distraction" placeholder="جلسه، پیام، تغییر اولویت، کارهای خرد..."></textarea></div>
+          <div class="field full"><label for="tomorrow">فردا برای حفظ تمرکز، فقط یک چیز را چه تغییر می‌دهی؟</label><input id="tomorrow" type="text" placeholder="مثلاً: ۹ تا ۱۰:۳۰ هیچ جلسه‌ای قبول نمی‌کنم." /></div>
+        </div>
+      </article>
+    </section>
+    <footer class="footer"><span>از دل کار — یادداشت‌ها و ابزارهایی از تجربه واقعی کار</span><span class="badge">تمرکز و کار عمیق</span></footer>
+  </main>
+
+  <script>
+    (() => {
+      const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+      const killers = [...document.querySelectorAll('#focusKillers input[type="checkbox"]')];
+      const scoreEl = document.getElementById('focusScore');
+      const statusEl = document.getElementById('focusStatus');
+      function updateFocusScore(){
+        const n = killers.filter(x => x.checked).length;
+        scoreEl.textContent = fa(n);
+        if(n<=1) statusEl.textContent='تمرکزت فعلاً نسبتاً محافظت شده است.';
+        else if(n<=3) statusEl.textContent='روزت چند نقطه شکست تمرکز دارد.';
+        else if(n<=5) statusEl.textContent='روز کاری‌ات به‌وضوح تکه‌تکه است.';
+        else statusEl.textContent='تقریباً همه عوامل اصلی حواس‌پرتی فعال‌اند.';
+      }
+      killers.forEach(x=>x.addEventListener('change',updateFocusScore));
+
+      const quiz=document.getElementById('interruptQuiz');
+      const result=document.getElementById('interruptResult');
+      function updateInterruptResult(){
+        const selected=['q1','q2','q3'].map(name=>document.querySelector(`input[name="${name}"]:checked`));
+        if(selected.some(x=>!x)){result.textContent='سه سؤال را جواب بده تا نتیجه نمایش داده شود.';return;}
+        const score=selected.reduce((s,x)=>s+Number(x.value),0);
+        if(score>=4) result.textContent='احتمالاً واقعاً فوری است. آگاهانه اولویتت را تغییر بده.';
+        else if(score>=1) result.textContent='مهم است، اما لزوماً «همین الان» نه. زمان مشخصی برایش تعیین کن.';
+        else result.textContent='احتمالاً یک فوریت کاذب است. ثبتش کن و به کار اصلی برگرد.';
+      }
+      quiz.addEventListener('change',updateInterruptResult);
+
+      const form=document.getElementById('focusPlanner');
+      const planBox=document.getElementById('planBox');
+      const planList=document.getElementById('planList');
+      function endTime(start,duration){
+        if(!start) return '';
+        const [h,m]=start.split(':').map(Number); const total=h*60+m+duration;
+        const eh=Math.floor((total%1440)/60), em=total%60;
+        return `${String(eh).padStart(2,'0')}:${String(em).padStart(2,'0')}`;
+      }
+      form.addEventListener('submit',e=>{
+        e.preventDefault();
+        const task=document.getElementById('mainTask').value.trim();
+        if(!task){document.getElementById('mainTask').focus();return;}
+        const start=document.getElementById('startTime').value;
+        const duration=Number(document.getElementById('duration').value);
+        const messages=document.getElementById('messages').value;
+        const capture=document.getElementById('capture').value;
+        const boundary=document.getElementById('boundary').value.trim();
+        const end=endTime(start,duration);
+        const items=[`کار اصلی: ${task}`,`بازه تمرکز: ${fa(start)} تا ${fa(end)} — ${fa(duration)} دقیقه`,`پیام‌ها: ${messages}`,`کارهای جدید: ${capture}`];
+        if(boundary) items.push(`مرز ارتباطی: ${boundary}`);
+        planList.innerHTML='';
+        items.forEach(text=>{const li=document.createElement('li');li.textContent=text;planList.appendChild(li);});
+        planBox.hidden=false; planBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+      });
+      document.getElementById('resetBtn').addEventListener('click',()=>{form.reset();document.getElementById('startTime').value='09:30';planBox.hidden=true;planList.innerHTML='';});
+      document.getElementById('printBtn').addEventListener('click',()=>window.print());
+    })();
+  </script>
+</body>
+</html>
